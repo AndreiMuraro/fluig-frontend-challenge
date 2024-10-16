@@ -1,4 +1,4 @@
-import { TaskCard } from './TaskCard.js';
+import { TaskCard } from './taskCard.js';
 
 export class TaskColumn extends HTMLElement {
     constructor() {
