@@ -1,39 +1,36 @@
-import { TaskCard } from './TaskCard.js';
+import { TaskCard } from './taskCard.js';
 
 export class TaskColumn extends HTMLElement {
     constructor() {
+
         super();
         this.column = { title: '', status: 0 };
         this.tasks = [];
-        this.onNewTask = () => { };
-        this.onEditTask = () => { };
-        this.onDeleteTask = () => { };
     }
 
     connectedCallback() {
         if (this.isConnected) {
             this.render();
         }
-    } x
+    }
 
-    set columnData(data) {
-        this.column = data.column || { title: '', status: 0 };
-        this.tasks = data.tasks || [];
-        this.onNewTask = data.onNewTask || (() => { });
-        this.onEditTask = data.onEditTask || (() => { });
-        this.onDeleteTask = data.onDeleteTask || (() => { });
+    set columnData({ column = { title: '', status: 0 }, tasks = [], onNewTask = () => { }, onEditTask = () => { }, onDeleteTask = () => { } }) {
+        this.column = column;
+        this.tasks = tasks;
+        this.onNewTask = onNewTask;
+        this.onEditTask = onEditTask;
+        this.onDeleteTask = onDeleteTask;
         this.render();
     }
 
     render() {
-        const columnTitle = this.column?.title || 'Coluna';
-        const columnStatus = this.column?.status ?? 0;
-        const tasksCount = this.tasks?.length ?? 0;
+        const { title = 'Coluna', status = 0 } = this.column;
+        const tasksCount = this.tasks.length;
 
         this.innerHTML = `
             <div class="column-content">
-                <h5 class="column-title">${columnTitle} (${tasksCount})</h5>
-                <button class="btn btn-light mb-3 new-task" data-status="${columnStatus}">Nova tarefa</button>
+                <h5 class="column-title">${title} (${tasksCount})</h5>
+                <button class="btn btn-light mb-3 new-task" data-status="${status}">Nova tarefa</button>
                 <div class="task-list"></div>
             </div>
         `;

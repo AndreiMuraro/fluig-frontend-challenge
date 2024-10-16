@@ -55,9 +55,29 @@
 }
 
 .btn-link i {
-    font-size: 1rem; /* Ajusta o tamanho dos ícones */
+    font-size: 1rem; 
 }
 
 .edit-task {
-    margin-right: 0.5rem; /* Adiciona um espaço entre os ícones */
+    margin-right: 0.5rem; 
+}
+
+.card .position-absolute {
+    top: 0.5rem; 
+    right: 0.5rem; 
+    display: none; 
+}
+
+.card:hover .position-absolute {
+    display: block; 
+}
+
+.edit-button,
+.delete-button {
+    display: none; 
+}
+
+.card:hover .edit-button,
+.card:hover .delete-button {
+    display: block; 
 }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server -o -p 5500",
-    "dev": "live-server --port=5501",
+    "dev": "live-server --port=5503",
     "server": "json-server --watch data/tasks.json --port 3000",
     "test": "jest --roots tests"
   },

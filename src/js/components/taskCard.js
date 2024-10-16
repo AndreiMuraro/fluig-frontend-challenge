@@ -78,11 +78,13 @@ class TaskCard extends HTMLElement {
 
         const now = new Date();
         const deadline = new Date(this.task.deadline_date);
-        const daysLeft = DateUtils.getDaysBetweenDates(now, deadline);
+
+        const diffTime = deadline - now;
+        const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
         if (daysLeft < 0) {
-            const diasPassados = Math.abs(daysLeft);
-            return `<span class="text-danger">Expirou há ${diasPassados} ${diasPassados === 1 ? 'dia' : 'dias'}</span>`;
+            const pastDays = Math.abs(daysLeft);
+            return `<span class="text-danger">Expirou há ${pastDays} ${pastDays === 1 ? 'dia' : 'dias'}</span>`;
         } else if (daysLeft === 0) {
             return `<span class="text-warning">Expira hoje</span>`;
         } else {
