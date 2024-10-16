@@ -14,7 +14,7 @@ export class TaskColumn extends HTMLElement {
         if (this.isConnected) {
             this.render();
         }
-    } x
+    }
 
     set columnData(data) {
         this.column = data.column || { title: '', status: 0 };
