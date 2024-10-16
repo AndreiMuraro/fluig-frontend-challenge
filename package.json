@@ -18,6 +18,7 @@
     "live-server": "^1.2.2"
   },
   "dependencies": {
+    "json-server": "^0.17.3",
     "meu-quadro": "file:"
   }
 }
