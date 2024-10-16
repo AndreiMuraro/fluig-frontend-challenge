@@ -4,11 +4,16 @@
   "description": "Aplicativo de Lista de Tarefas",
   "main": "index.js",
   "scripts": {
-    "start": "live-server --port=5500",
+    "start": "http-server -o -p 5500",
+    "dev": "live-server --port=5501",
     "server": "json-server --watch data/tasks.json --port 3000",
-    "test": "jest"
+    "test": "jest --roots tests"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "babel-jest": "^29.7.0",
+    "http-server": "^14.1.1",
     "jest": "^29.7.0",
     "live-server": "^1.2.2"
   },
