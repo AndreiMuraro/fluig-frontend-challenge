@@ -1,10 +1,10 @@
 .column-content {
-    max-width: 19.375rem; /* 310px convertido para rem */
+    max-width: 19.375rem; /* 310px em rem */
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1200px) {
     .column-content {
-        max-width: 37.5rem; /* 600px convertido para rem */
+        max-width: 37.5rem; /* 600px em rem */
     }
 }
 
@@ -13,6 +13,11 @@
     font-weight: bold;
     background-color: #ede7fe;
     color: #762BF4;
+}
+
+.new-task:hover {
+    background-color: #762BF4;
+    color: #fff;
 }
 
 .column-title {

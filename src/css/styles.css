@@ -7,16 +7,16 @@
 }
 
 .btn-purple {
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: #7B61FF;
     border-color: #7B61FF;
-    color: white;
+    color: #fff;
 }
 
 .btn-purple:hover {
-    background-color: #0B5ED7;
-    border-color: #0B5ED7;
-    color: white;
+    background-color: #6A50D3;
+    border-color: #6A50D3;
+    color: #fff;
 }
 
 .icon-search {

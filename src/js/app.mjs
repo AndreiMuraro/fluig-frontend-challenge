@@ -32,15 +32,15 @@ class App {
         const searchInput = searchForm.querySelector('input[type="search"]');
         const searchButton = searchForm.querySelector('button[type="button"]');
 
-        searchButton.addEventListener('click', (e) => {
+        const handleSearch = (e) => {
             e.preventDefault();
             this.searchTasks(searchInput.value);
-        });
+        };
 
+        searchButton.addEventListener('click', handleSearch);
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                e.preventDefault();
-                this.searchTasks(searchInput.value);
+                handleSearch(e);
             }
         });
     }
@@ -53,7 +53,7 @@ class App {
         }
     }
 
-    render() {
+    render(tasks = this.tasks) {
         this.boardElement.innerHTML = `
             <div class="row g-4">
                 ${this.columns.map(column => `
@@ -66,7 +66,7 @@ class App {
 
         this.columns.forEach(column => {
             const columnElement = this.boardElement.querySelector(`#column-${column.status}`);
-            const columnTasks = this.tasks.filter(task => task.status === column.status);
+            const columnTasks = tasks.filter(task => task.status === column.status);
 
             columnElement.column = column;
             columnElement.tasks = columnTasks;
@@ -98,9 +98,11 @@ class App {
             } else {
                 await this.createTask(taskData);
             }
-            this.render();
         } catch (error) {
             console.error('Erro ao processar tarefa:', error);
+            this.showToast('Erro ao processar tarefa!', 'danger');
+        } finally {
+            this.render();
         }
     }
 
@@ -163,36 +165,10 @@ class App {
         const filteredTasks = this.tasks.filter(task =>
             task.title.toLowerCase().includes(query.toLowerCase())
         );
-        this.renderFilteredTasks(filteredTasks);
-    }
-
-    renderFilteredTasks(filteredTasks) {
-        this.boardElement.innerHTML = `
-            <div class="row g-4">
-                ${this.columns.map(column => `
-                    <div class="col-12 col-md-4">
-                        <task-column id="column-${column.status}"></task-column>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-
-        this.columns.forEach(column => {
-            const columnElement = this.boardElement.querySelector(`#column-${column.status}`);
-            const columnTasks = filteredTasks.filter(task => task.status === column.status);
-
-            columnElement.column = column;
-            columnElement.tasks = columnTasks;
-            columnElement.onNewTask = this.openNewTaskModal.bind(this);
-            columnElement.onEditTask = this.openEditTaskModal.bind(this);
-            columnElement.onDeleteTask = this.deleteTask.bind(this);
-
-            columnElement.render();
-        });
+        this.render(filteredTasks);
     }
 }
 
-// Inicializa a aplicação quando o DOM estiver completamente carregado
 document.addEventListener('DOMContentLoaded', () => {
     new App();
 });

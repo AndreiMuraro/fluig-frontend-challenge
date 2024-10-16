@@ -1,15 +1,20 @@
 import { DateUtils } from '../../utils/DateUtils.js';
 
 class TaskCard extends HTMLElement {
+    task = null;
+    onUpdate = () => { };
+    onDelete = () => { };
+
     constructor() {
         super();
-        this.task = null;
-        this.onUpdate = () => { };
-        this.onDelete = () => { };
     }
 
     connectedCallback() {
         this.render();
+    }
+
+    disconnectedCallback() {
+        this.removeEventListeners();
     }
 
     set taskData({ task, onUpdate, onDelete }) {
@@ -47,17 +52,25 @@ class TaskCard extends HTMLElement {
     }
 
     setupEventListeners() {
-        const editButton = this.querySelector('.edit-task');
-        const deleteButton = this.querySelector('.delete-task');
+        this.editButton = this.querySelector('.edit-task');
+        this.deleteButton = this.querySelector('.delete-task');
 
-        if (editButton) {
-            editButton.addEventListener('click', () => this.onUpdate(this.task.id));
-        }
-
-        if (deleteButton) {
-            deleteButton.addEventListener('click', () => this.onDelete(this.task.id));
-        }
+        this.editButton?.addEventListener('click', this.handleEdit);
+        this.deleteButton?.addEventListener('click', this.handleDelete);
     }
+
+    removeEventListeners() {
+        this.editButton?.removeEventListener('click', this.handleEdit);
+        this.deleteButton?.removeEventListener('click', this.handleDelete);
+    }
+
+    handleEdit = () => {
+        this.onUpdate(this.task.id);
+    };
+
+    handleDelete = () => {
+        this.onDelete(this.task.id);
+    };
 
     getDaysInColumn() {
         const now = new Date();

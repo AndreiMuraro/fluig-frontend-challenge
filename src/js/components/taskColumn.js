@@ -1,17 +1,18 @@
 import { TaskCard } from './taskCard.js';
 
 export class TaskColumn extends HTMLElement {
-    constructor() {
+    column = { title: '', status: 0 };
+    tasks = [];
+    onNewTask = () => { };
+    onEditTask = () => { };
+    onDeleteTask = () => { };
 
+    constructor() {
         super();
-        this.column = { title: '', status: 0 };
-        this.tasks = [];
     }
 
     connectedCallback() {
-        if (this.isConnected) {
-            this.render();
-        }
+        this.render();
     }
 
     set columnData({ column = { title: '', status: 0 }, tasks = [], onNewTask = () => { }, onEditTask = () => { }, onDeleteTask = () => { } }) {
@@ -57,11 +58,9 @@ export class TaskColumn extends HTMLElement {
 
     setupEventListeners() {
         const newTaskButton = this.querySelector('.new-task');
-        if (newTaskButton) {
-            newTaskButton.addEventListener('click', () => {
-                this.onNewTask(this.column.status);
-            });
-        }
+        newTaskButton?.addEventListener('click', () => {
+            this.onNewTask(this.column.status);
+        });
     }
 
     updateTasks(newTasks) {
