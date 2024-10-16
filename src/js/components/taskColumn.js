@@ -3,7 +3,7 @@ import { TaskCard } from './TaskCard.js';
 export class TaskColumn extends HTMLElement {
     constructor() {
         super();
-        this.column = { title: '', status: 0 }; // Valor padrão
+        this.column = { title: '', status: 0 };
         this.tasks = [];
         this.onNewTask = () => { };
         this.onEditTask = () => { };

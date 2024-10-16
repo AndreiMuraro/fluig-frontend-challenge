@@ -110,7 +110,6 @@ class App {
             this.tasks.push(createdTask);
             this.render();
 
-            // Mostrar toast de sucesso
             this.showToast('Tarefa criada com sucesso!', '762BF4');
         } catch (error) {
             console.error('Erro ao criar tarefa:', error);
@@ -127,7 +126,6 @@ class App {
             }
             this.render();
 
-            // Mostrar toast de sucesso
             this.showToast('Tarefa atualizada com sucesso!', 'success');
         } catch (error) {
             console.error('Erro ao atualizar tarefa:', error);
@@ -142,18 +140,12 @@ class App {
                 this.tasks = this.tasks.filter(task => task.id !== taskId);
                 this.render();
 
-                // Mostrar toast de sucesso
                 this.showToast('Tarefa excluída com sucesso!', 'success');
             } catch (error) {
                 console.error('Erro ao deletar tarefa:', error);
                 this.showToast('Erro ao deletar tarefa!', 'danger');
             }
         }
-    }
-
-    searchBar(query) {
-        console.log('Pesquisando por:', query);
-        // Implemente a lógica de pesquisa aqui
     }
 
     showToast(message, color) {

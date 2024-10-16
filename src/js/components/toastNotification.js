@@ -12,15 +12,15 @@ class ToastNotification extends HTMLElement {
         this.showToast();
     }
 
-    render(message, color) {
+    render(message, color = 'success') {
         const customColor = color === 'success' ? '#762BF4' : 'danger';
-        console.log('customColor', customColor);
         this.shadowRoot.innerHTML = `
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 0; right: 0; margin: 1rem;">
-                <div class="toast-body text-white" style="background-color: ${customColor || `var(--bs-${color})`}; border-radius: 0.25rem;">
-                    ${message}
-                </div>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; bottom: 0; right: 0; margin: 1rem;">
+            <div class="toast-body text-white d-flex justify-content-between align-items-center" style="background-color: ${customColor || `var(--bs-${color})`}; border-radius: 0.25rem;">
+                <span>${message}</span>
             </div>
+        </div>
         `;
     }
 
@@ -32,11 +32,6 @@ class ToastNotification extends HTMLElement {
         setTimeout(() => {
             toastElement.classList.remove('show');
         }, duration);
-
-        const closeButton = this.shadowRoot.querySelector('.close');
-        closeButton.addEventListener('click', () => {
-            toastElement.classList.remove('show');
-        });
     }
 }
 
