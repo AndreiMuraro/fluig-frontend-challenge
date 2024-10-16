@@ -1,39 +1,45 @@
-### Desafio Front-end
+# Desafio Front-end Fluig
 
-#### O desafio
-Criar um aplicativo de Lista de Tarefas de acordo com o [**protótipo disponibilizado**](https://www.figma.com/file/RH2L8XnE5h4HikUh43Mvd1/Frontend-Challenge-Fluig?type=design&node-id=0-1&mode=design&t=RbsEW01QIyn90WeO-0), que permite criar, editar, e remover tarefas, e alterar o status de cada tarefa (A fazer, Fazendo, Concluído).
+## O desafio
+Criar um aplicativo de Lista de Tarefas que permite criar, editar, remover tarefas e alterar o status de cada tarefa (A fazer, Fazendo, Concluído).
 
-#### Requisitos Técnicos
-- Utilizar somente HTML, CSS, e JavaScript (ES6);
-- Utilizar o Bootstrap como biblioteca de componentes;
-- Utilizar [**json-server**](https://www.npmjs.com/package/json-server) com o arquivo **[tasks.json](tasks.json)** para simular as API’s das tarefas.
+## Tecnologias
+- HTML
+- CSS
+- JavaScript (ES6)
+- Bootstrap
+- Web Components
 
-#### O que não é permitido :warning:
-- Frameworks de JS no geral (React, Vue, Angular, Ember e afins);
-- Bibliotecas de utilidades (Underscore, Lodash e afins).
+## Funcionalidades adicionadas
+- Exibição de tarefas;
+- Busca de tarefas pelo nome;
+- Remoção de tarefas;
+- Edição de informações da tarefa;
+- Movimentar tarefas;
 
-#### Opcionais
-- Linters no geral tanto para JS como para CSS;
-- Task runners/build tools como Webpack, Gulp, Grunt e afins.
+## Rodando o projeto
+É necessário ter o npm e o Node.js (versão 18 ou maior) instalados.
 
-#### Regras
-- Deve possuir um arquivo **README.md** indicando como executar o projeto;
-- A busca deverá ser feita pelo título da tarefa;
-- Datas devem ser persistidas no formato ISO 8610 UTC.
+1. Utilizando o terminal, faça o clone do projeto:
+   ```bash
+   git clone git@github.com:AndreiMuraro/fluig-frontend-challenge.git
+   ```
 
-#### Diferenciais
-- Testes automatizados (unitário, integração..);
-- Web Components (custom elements);
-- Responsividade;
-- Acessibilidade.
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-#### Submissão
-- Dê um fork nesse repositório;
-- Implemente a solução, commitando suas alterações;
-- Abra um pull-request para esse repositório para enviar seu projeto.
+3. Inicie o json-server:
+    ```bash
+    npm run server
+    ```
 
-#### Links Úteis
-- Protótipo: https://www.figma.com/file/RH2L8XnE5h4HikUh43Mvd1/Frontend-Challenge-Fluig?type=design&node-id=0-1&mode=design&t=RbsEW01QIyn90WeO-0
-- json-server: https://www.npmjs.com/package/json-server
+3. Rode o projeto localmente:
+   ```bash
+   npm start
+   ```
+Isso abrirá automaticamente o seu navegador.
 
-Caso precise de mais informações, envie uma mensagem para rodolfo.vito@totvs.com.br.
+
+Este projeto utiliza o `json-server` para simular as APIs das tarefas, garantindo que as operações de CRUD (criação, leitura, atualização e exclusão) funcionem corretamente.
