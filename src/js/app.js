@@ -1,6 +1,6 @@
 import TaskService from './services/taskService.js';
 import { TaskModal } from './components/taskModal.js';
-import { TaskColumn } from './components/TaskColumn.js';
+import { TaskColumn } from './components/taskColumn.js';
 import { ToastNotification } from './components/toastNotification.js';
 
 class App {
