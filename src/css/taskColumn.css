@@ -1,0 +1,22 @@
+.column-content {
+    max-width: 19.375rem; /* 310px convertido para rem */
+}
+
+@media (min-width: 1920px) {
+    .column-content {
+        max-width: 37.5rem; /* 600px convertido para rem */
+    }
+}
+
+.new-task {
+    width: 100%;
+    font-weight: bold;
+    background-color: #ede7fe;
+    color: #762BF4;
+}
+
+.column-title {
+    color: #6C757D;
+    font-weight: 400;
+    font-size: 1rem;
+}

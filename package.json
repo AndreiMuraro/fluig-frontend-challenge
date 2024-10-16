@@ -4,11 +4,13 @@
   "description": "Aplicativo de Lista de Tarefas",
   "main": "index.js",
   "scripts": {
-    "start": "live-server --port=5500",
+    "start": "http-server -o -p 5505",
+    "dev": "live-server --port=5500",
     "server": "json-server --watch data/tasks.json --port 3000",
     "test": "jest"
   },
   "devDependencies": {
+    "http-server": "^14.1.1",
     "jest": "^29.7.0",
     "live-server": "^1.2.2"
   },

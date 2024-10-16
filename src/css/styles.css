@@ -1,0 +1,27 @@
+.custom-margin {
+    padding: 33px;
+}
+
+.text-purple {
+    color: #7B61FF !important;
+}
+
+.btn-purple {
+    font-size: 1.2rem;
+    background-color: #7B61FF;
+    border-color: #7B61FF;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #0B5ED7;
+    border-color: #0B5ED7;
+    color: white;
+}
+
+.icon-search {
+    font-size: 1rem;
+    width: 1em;
+    height: 1em;
+}
+
