@@ -1,0 +1,10 @@
+# Ignorar a pasta node_modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de ambiente
+.env

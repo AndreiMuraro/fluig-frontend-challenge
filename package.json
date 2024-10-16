@@ -1,0 +1,18 @@
+{
+  "name": "meu-quadro",
+  "version": "1.0.0",
+  "description": "Aplicativo de Lista de Tarefas",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --port=5500",
+    "server": "json-server --watch data/tasks.json --port 3000",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "meu-quadro": "file:"
+  }
+}
