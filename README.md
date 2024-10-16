@@ -17,7 +17,7 @@ Criar um aplicativo de Lista de Tarefas que permite criar, editar, remover taref
 - Remoção de tarefas;
 - Edição de informações da tarefa;
 - Movimentar tarefas;
-- Testes Automatizados/
+- Testes Automatizados;
 
 ## Rodando o projeto
 É necessário ter o npm e o Node.js (versão 18 ou maior) instalados.
