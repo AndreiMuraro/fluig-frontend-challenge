@@ -25,7 +25,7 @@ class ToastNotification extends HTMLElement {
     }
 
     showToast() {
-        const duration = 3000; // Duração fixa de 3000 milissegundos
+        const duration = 3000;
         const toastElement = this.shadowRoot.querySelector('.toast');
         toastElement.classList.add('show');
 

@@ -34,13 +34,13 @@ class App {
 
         searchButton.addEventListener('click', (e) => {
             e.preventDefault();
-            this.handleSearch(searchInput.value);
+            this.searchTasks(searchInput.value);
         });
 
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                this.handleSearch(searchInput.value);
+                this.searchTasks(searchInput.value);
             }
         });
     }
@@ -90,7 +90,7 @@ class App {
     }
 
     async handleTaskSubmit(event) {
-        event.preventDefault(); // Previne o comportamento padrão do evento
+        event.preventDefault();
         const { isEditMode, ...taskData } = event.detail;
         try {
             if (isEditMode) {
@@ -98,7 +98,7 @@ class App {
             } else {
                 await this.createTask(taskData);
             }
-            this.render(); // Atualiza a visualização após a operação
+            this.render();
         } catch (error) {
             console.error('Erro ao processar tarefa:', error);
         }
@@ -108,7 +108,7 @@ class App {
         try {
             const createdTask = await TaskService.createTask(taskData);
             this.tasks.push(createdTask);
-            this.render(); // Atualiza a visualização após criar a tarefa
+            this.render();
 
             // Mostrar toast de sucesso
             this.showToast('Tarefa criada com sucesso!', '762BF4');
@@ -125,7 +125,7 @@ class App {
             if (index !== -1) {
                 this.tasks[index] = updatedTask;
             }
-            this.render(); // Atualiza a visualização após atualizar a tarefa
+            this.render();
 
             // Mostrar toast de sucesso
             this.showToast('Tarefa atualizada com sucesso!', 'success');
@@ -140,7 +140,7 @@ class App {
             try {
                 await TaskService.deleteTask(taskId);
                 this.tasks = this.tasks.filter(task => task.id !== taskId);
-                this.render(); // Atualiza a visualização após deletar a tarefa
+                this.render();
 
                 // Mostrar toast de sucesso
                 this.showToast('Tarefa excluída com sucesso!', 'success');
@@ -151,10 +151,9 @@ class App {
         }
     }
 
-    handleSearch(query) {
+    searchBar(query) {
         console.log('Pesquisando por:', query);
         // Implemente a lógica de pesquisa aqui
-        // Após a pesquisa, chame this.render() para atualizar a visualização
     }
 
     showToast(message, color) {
@@ -163,10 +162,41 @@ class App {
         toast.setAttribute('color', color);
         document.body.appendChild(toast);
 
-        // Remover o toast após a duração
         setTimeout(() => {
             document.body.removeChild(toast);
         }, 3000);
+    }
+
+    searchTasks(query) {
+        const filteredTasks = this.tasks.filter(task =>
+            task.title.toLowerCase().includes(query.toLowerCase())
+        );
+        this.renderFilteredTasks(filteredTasks);
+    }
+
+    renderFilteredTasks(filteredTasks) {
+        this.boardElement.innerHTML = `
+            <div class="row g-4">
+                ${this.columns.map(column => `
+                    <div class="col-12 col-md-4">
+                        <task-column id="column-${column.status}"></task-column>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+        this.columns.forEach(column => {
+            const columnElement = this.boardElement.querySelector(`#column-${column.status}`);
+            const columnTasks = filteredTasks.filter(task => task.status === column.status);
+
+            columnElement.column = column;
+            columnElement.tasks = columnTasks;
+            columnElement.onNewTask = this.openNewTaskModal.bind(this);
+            columnElement.onEditTask = this.openEditTaskModal.bind(this);
+            columnElement.onDeleteTask = this.deleteTask.bind(this);
+
+            columnElement.render();
+        });
     }
 }
 
