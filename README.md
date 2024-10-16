@@ -9,6 +9,7 @@ Criar um aplicativo de Lista de Tarefas que permite criar, editar, remover taref
 - JavaScript (ES6)
 - Bootstrap
 - Web Components
+- Testes Automatizados (JEST)
 
 ## Funcionalidades adicionadas
 - Exibição de tarefas;
@@ -16,6 +17,7 @@ Criar um aplicativo de Lista de Tarefas que permite criar, editar, remover taref
 - Remoção de tarefas;
 - Edição de informações da tarefa;
 - Movimentar tarefas;
+- Testes Automatizados/
 
 ## Rodando o projeto
 É necessário ter o npm e o Node.js (versão 18 ou maior) instalados.
@@ -40,6 +42,11 @@ Criar um aplicativo de Lista de Tarefas que permite criar, editar, remover taref
    npm start
    ```
 Isso abrirá automaticamente o seu navegador.
+
+Para realizar os Testes Automatizados com Jest:
+   ```bash
+      npm test
+   ```
 
 
 Este projeto utiliza o `json-server` para simular as APIs das tarefas, garantindo que as operações de CRUD (criação, leitura, atualização e exclusão) funcionem corretamente.
